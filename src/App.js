@@ -10,6 +10,7 @@ function App() {
   const [translationFontSize, setTranslationFontSize] = useState(16);
   const [loading, setLoading] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
+  const [chapter, setChapter] = useState(null);
 
   const getChapters = async () => {
     const response = await fetch('https://api.quran.com/api/v4/chapters');
@@ -36,7 +37,12 @@ function App() {
   }, []);
 
   useEffect(() => {
+    getChapterInfo();
+  }, [chapters]);
+
+  useEffect(() => {
     getVerses();
+    getChapterInfo();
   }, [selectedChapter]);
 
   const options = {
@@ -57,36 +63,48 @@ function App() {
     },
   };
 
+  const getChapterInfo = () => {
+    const c = chapters.find(chapter => chapter.id === parseInt(selectedChapter))
+    setChapter(c)
+    console.log(c)
+  }
+
   const getTargetElement = () => document.getElementById('content-id');
 
   return (
-    <div className={`App flex flex-col h-screen ${darkMode ? 'bg-[#111]' : 'text-black'}`}>
-      <header className={`App-header flex flex-row flex-wrap gap-4 flex-0 p-3 z-50 no-print ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
-        <div><AddSubtract title="Transliteration Font Size" getValue={setTransliterationFontSize} defaultValue={transliterationFontSize} textfonts /></div>
-        <div><AddSubtract title="Translation Font Size" getValue={setTranslationFontSize} defaultValue={translationFontSize} textfonts /></div>
-        <div><AddSubtract title="Arabic Font Size" getValue={setArabicFontSize} defaultValue={arabicFontSize} /></div>
-        <div className=" bg-white px-4 py-2 rounded cursor-pointer" onClick={() => generatePDF(getTargetElement, options)}>
-          Download PDF
+    <div className={`App flex flex-col h-full min-h-screen ${darkMode ? 'bg-[#111]' : 'text-black'}`}>
+      <header className={`App-header flex flex-row flex-wrap justify-between items-center gap-4  flex-0 p-3 z-50 no-print ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
+        <div className="flex flex-row flex-wrap gap-4">
+          <div><AddSubtract title="Transliteration Font Size" getValue={setTransliterationFontSize} defaultValue={transliterationFontSize} textfonts /></div>
+          <div><AddSubtract title="Translation Font Size" getValue={setTranslationFontSize} defaultValue={translationFontSize} textfonts /></div>
+          <div><AddSubtract title="Arabic Font Size" getValue={setArabicFontSize} defaultValue={arabicFontSize} /></div>
+          <div className=" bg-white px-4 py-2 rounded cursor-pointer" onClick={() => generatePDF(getTargetElement, options)}>
+            Download PDF
+          </div>
+
+          <button
+            className=" bg-white px-4 py-2 rounded cursor-pointer"
+            onClick={() => setDarkMode(!darkMode)}
+          >
+            {darkMode ? 'Turn off Dark Mode' : 'Turn on Dark Mode'}
+          </button>
         </div>
-        <div>
-          <select onChange={changeChapter} className="py-2 h-full px-4 bg-white rounded">
-            {chapters.map((chapter, index) => (
-              <option key={chapter.id} value={chapter.id}>
-                {chapter.name_simple} ({chapter.translated_name.name} - {index + 1})
-              </option>
-            ))}
-          </select>
+        <div className="px-4 py-2 rounded bg-white flex flex-row flex-wrap items-center gap-4">
+          <div>
+            <select onChange={changeChapter} className="py-2 h-full px-4 bg-white rounded">
+              {chapters.map((chapter, index) => (
+                <option key={chapter.id} value={chapter.id}>
+                  {chapter.name_simple}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>{chapter && chapter.translated_name.name + ' (' + chapter.id + ')'} </div>
         </div>
-        <button
-          className=" bg-white px-4 py-2 rounded cursor-pointer"
-          onClick={() => setDarkMode(!darkMode)}
-        >
-          {darkMode ? 'Turn off Dark Mode' : 'Turn on Dark Mode'}
-        </button>
       </header>
       <main className="flex-1 p-4 h-full" id="content-id">
         {loading && (
-          <div className="flex items-center justify-center h-screen">
+          <div className={`flex items-center justify-center h-screen ${darkMode ? "text-white" : "text-black"}`}>
             <div><i className="fa-solid fa-sync fa-spin mr-2"></i> Loading...</div>
           </div>
         )}
@@ -138,7 +156,7 @@ function AddSubtract({ title, getValue, defaultValue, textfonts }) {
   };
 
   return (
-    <div className="flex bg-white px-4 py-2 rounded items-center mr-4">
+    <div className="flex bg-white px-4 py-2 rounded items-center ">
       <div className="mr-4">{title}</div>
       <button onClick={add}><i className="fa-solid fa-square-plus hover:text-blue-400"></i></button>
       <div className="mx-2">{value}</div>
