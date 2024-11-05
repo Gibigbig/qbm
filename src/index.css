@@ -17,3 +17,9 @@ code {
   font-weight: 400;
   font-style: normal;
 }
+
+@media print {
+  .no-print {
+    display: none;
+  }
+}
