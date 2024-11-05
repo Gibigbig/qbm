@@ -11,6 +11,7 @@ function App() {
     const response = await fetch('https://api.quran.com/api/v4/chapters');
     const data = await response.json();
     setChapters(data.chapters);
+    console.log(data.chapters);
   }
 
   const getVerses = async () => {
@@ -38,9 +39,10 @@ function App() {
     <div className="App flex flex-col" dir="rtl">
       <header className="App-header flex-0 bg-gray-100 p-3">
         <div>
-          <select onChange={changeChapter}>
+          <select onChange={changeChapter} class="py-2 px-4 bg-white rounded">
             {chapters.map(chapter => (
-              <option key={chapter.id} value={chapter.id}>{chapter.name_simple}</option>
+              <option key={chapter.id} value={chapter.id}>{chapter.name_simple} ({chapter.translated_name.name
+              })</option>
             ))}
           </select>
         </div>
@@ -48,7 +50,7 @@ function App() {
       <main className="flex-1 p-4 table">
         {verses.map(verse => (
           verse.words.map(word => {
-            return <Textbit key={verse.id} arabic={word.text} transliteration={word.transliteration.text} translation={word.translation.text} />
+            return <Textbit key={verse.id + word.transliteration.text} arabic={word.text} transliteration={word.transliteration.text} translation={word.translation.text} />
           })
         ))}
       </main>
