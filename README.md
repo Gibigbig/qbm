@@ -20,7 +20,7 @@ Check out https://myquran.gg to see this live
 
 # Inspiration
 
-I was looking for a book with the transliteration and translation that you can read along with the arabic text, I found a few, but the translations we're on the lower half of the page or following page. Also the font sizes were not editable. 
+I was looking for a book with the transliteration and translation that you can read along with the arabic text, I found a few, but the translations were on the lower half of the page or following page. Also the font sizes were not editable. 
 I decided to make my own, thanks to the guys at quran.com and their free API, I was able to create this simple app, and export all the chapters in PDF format that will break up the sentences into words/units and have the transliteration and translation immediately underneath. 
 This is great for anyone not only memorizing the transliteration, but also for those learning the arabic language itself, via the Holy Quran. 
 
