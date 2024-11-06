@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+'بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](https://github.com/user-attachments/assets/c358f1f5-7241-429d-a1f6-6f2f31d417ef)
 
-## Available Scripts
+# Quran Book Maker
 
-In the project directory, you can run:
+This is a simple react app that lets you read the quran distraction free. Includes transliteration + translation under the arabic text. 
 
-### `npm start`
+# Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Check out https://myquran.gg to see this live
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Features
+- Translation
+- Transliteration
+- Font customization
+- Dark mode
+- Download as PDF
+- Print/Save as PDF via browser print dialogue
 
-### `npm test`
+# Inspiration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I was looking for a book with the transliteration and translation that you can read along with the arabic text, I found a few, but the translations we're on the lower half of the page or following page. Also the font sizes were not editable. 
+I decided to make my own, thanks to the guys at quran.com and their free API, I was able to create this simple app, and export all the chapters in PDF format that will break up the sentences into words/units and have the transliteration and translation immediately underneath. 
+This is great for anyone not only memorizing the transliteration, but also for those learning the arabic language itself, via the Holy Quran. 
 
-### `npm run build`
+# Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1) `git clone https://github.com/Gibigbig/qbm.git`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2) `npm i`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3) `npm start`
 
-### `npm run eject`
+# License
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Free to use and modify/distribute.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Credits
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- API to quran.com
+- Fontawesome
+- Stripe for handling donations
+- Create React App Team
+- Tailwind
